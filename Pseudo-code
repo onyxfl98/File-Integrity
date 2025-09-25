@@ -1,0 +1,41 @@
+Pseudo-code for File Integrity Checker
+
+# --- Hashing Function ---
+def hash_file(filepath):
+    # Create a sha256 hash object
+    # Open the file in binary read mode ('rb')
+    # Read the file in chunks to handle large files
+    # Update the hash object with each chunk
+    # Return the final hexadecimal hash digest
+
+# --- Baseline Generation Function ---
+def generate_baseline(directory_to_scan):
+    # Create an empty dictionary for the baseline
+    # Use os.walk() to go through every file in the directory
+        # For each file, call hash_file() to get its hash
+        # Add the {filepath: hash} pair to the dictionary
+    # Open a baseline file (e.g., 'baseline.json') for writing
+    # Use json.dump() to save the dictionary to the file
+    # Print a success message
+
+# --- Integrity Check Function ---
+def check_integrity(directory_to_scan):
+    # Load the baseline from 'baseline.json' using json.load()
+    # Perform a new scan of the directory to get current hashes
+    # Compare the new scan with the baseline data
+    # Create lists for modified, new, and deleted files
+    # Print a report of the findings
+
+# --- Main Execution Block ---
+def main():
+    # Set up argparse to handle commands ('generate', 'check') and arguments ('--dir')
+    # Parse the arguments provided by the user
+    
+    # If the user chose 'generate':
+        # Call generate_baseline() with the specified directory
+    # If the user chose 'check':
+        # Call check_integrity() with the specified directory
+
+# Run the main function
+if __name__ == "__main__":
+    main()
