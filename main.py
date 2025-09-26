@@ -32,14 +32,15 @@ def main() -> None:
     args = parser.parse_args()
 
     ic(args)
+    ic(check_parser)
 
     # If the user chose 'generate':
         # Call generate_baseline() with the specified directory
-        
+
     # If the user chose 'check':
     if args.command == 'check':
-            from check_integrity import check_integrity
-            check_integrity(args.dir)
+            import check_integrity
+            check_integrity.check_integrity(args.dir)
 
 # Run the main function
 if __name__ == "__main__":

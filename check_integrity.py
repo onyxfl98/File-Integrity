@@ -6,7 +6,7 @@ Still needs further broken out and cleaned up.
 """
 
 import json
-from check_integrity import build_hash_dictionary
+from build_hash_dictionary import build_hash_dictionary
 
 def check_integrity(directory_to_scan: str, baseline_filename: str = "baseline.json") -> None:
     # Load the baseline from 'baseline.json' using json.load()
@@ -39,20 +39,9 @@ def check_integrity(directory_to_scan: str, baseline_filename: str = "baseline.j
             #ic(f"New file detected: {key}")
             new_files.append(key)
     
-    # Print a report of the findings
-    # since we're still using the simple version I'm just printing the lists but eventually the printout will likely move to it's own function
-    print("\nIntegrity Check Report:")
-    print("-----------------------")
-    print(f"Modified files ({len(modified_files)}):")
-    for file in modified_files:
-        print(f" - {file}")
-    print(f"\nNew files ({len(new_files)}):")
-    for file in new_files:
-        print(f" - {file}")
-    print(f"\nDeleted files ({len(deleted_files)}):")
-    for file in deleted_files:
-        print(f" - {file}")
-    print("\nIntegrity check complete.")
+    report_text = build_integrity_report(modified_files, new_files, deleted_files)
+
+    print_integrity_report(report_text)
 
 # --- Main Execution Block ---
 def main():

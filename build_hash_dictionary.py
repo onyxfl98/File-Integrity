@@ -4,7 +4,7 @@ Module description: Build Hash Dictionary. This function scans a specified direc
 """
 
 import os
-import hash_file
+from hash_file import hash_file
 
 def build_hash_dictionary(directory_to_scan: str) -> dict[str, str]:
     hash_dict: dict[str, str] = {}
